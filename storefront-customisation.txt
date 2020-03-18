@@ -1,0 +1,6 @@
+
+
+
+(Get-Content style.css) | 
+Foreach-Object {$_ -replace '\[MYID\]','MyValue'}  | 
+Out-File file.txt
