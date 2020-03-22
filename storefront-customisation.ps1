@@ -18,3 +18,17 @@ Out-File style.css
 
 
 :No
+
+/Logon banner image
+.logon-logo-container {
+    background-image: url(../images/1x/CitrixStoreFront_auth_14B96BFF2B0A6FF8.png);
+}
+
+.web-screen {
+    background-color: #161619;
+    background-image: url(../images/common/ReceiverFullScreenBackground_46E559C0E6B5A27B.jpg);
+    background-size: 100% 100%;
+    min-height: 400px;
+    height: auto!important;
+    height: 400px;
+}
