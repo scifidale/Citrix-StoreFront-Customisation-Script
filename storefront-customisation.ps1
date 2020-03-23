@@ -4,20 +4,45 @@ Invoke-Expression ".\pixie.exe"
 Choice.exe /C YN /M "Do you want StoreFront to display the servername? [Y/N]"
 if errorlevel 2 goto :No
 
-$SFVersion = Read-Host -Prompt 
+Invoke-Expression ".\pixie.exe"
+$SFStore = Read-Host -Prompt "Input Store name"
 $ThemeColour = Read-host -Prompt "Input Hex theme Colour one"
 $ButtonColour = Read-Host -Prompt "Input Hex for Button Colour"
 $HeaderColor =  Read-Host -Prompt "Inpurt Hex for post login Header Colour"
 $colour = "FFFFFF"
-Invoke-Expression ".\pixie.exe"
+
 $Server = Read-Host -Prompt 'Input your server  name'
-/ Invoke-Expression ".\pixie.exe"
+
+
+
+/* Select Graphic
+Add-Type -AssemblyName System.Windows.Forms
+$Image = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
+$null = $FileBrowser.ShowDialog()
+$Image | select-object SafefileName | FT -HideTableHeaders
+
+/* Server configuration block for no server name in footer
+
 
 
 (Get-Content style.css) | 
-Foreach-Object {$_ -replace '#test',"$colour"}  | 
+Foreach-Object {$_ -replace '#FFBD14',"$ThemeColour"}  | 
 Out-File style.css
 
+(Get-Content style.css) | 
+Foreach-Object {$_ -replace '#FFBD15',"$ButtonColour"}  | 
+Out-File style.css
+
+(Get-Content style.css) | 
+Foreach-Object {$_ -replace '#FFBD16',"$HeaderColour"}  | 
+Out-File style.css
+
+/* UK English Selection
+
+Choice.exe /C YN /M "Do you want StoreFront to display United Kingdom English? [Y/N]"
+if errorlevel 2 goto :NFNUK
+
+robocopy copy "strings.en" "c:\inetpub\wwwroot\Citrix\$SFStore"
 
 
 :No
