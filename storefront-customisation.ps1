@@ -22,8 +22,8 @@ Robocopy Source Custom script.js
 $Footer = Read-Host -Prompt "Do you want StoreFront to display the server name in the footer? [Y/N]"
 if ( $Footer -eq 'Y') {
 get-content -path footer\script.txt | add-content -path Custom\script.js
-get-content -path footer\style.txt | add-content -path Custom\style.css} ELSE {
-null}
+get-content -path footer\style.txt | add-content -path Custom\style.css
+C:\windows\system32\inetsrv\appcmd.exe set config /section:httpProtocol /+customHeaders.[name='SF-ServerName',value="%computername%"]} 
 
 
 
@@ -38,15 +38,15 @@ $Image | select-object FileName | FT -HideTableHeaders
 
 
 (Get-Content Custom\style.css) | 
-Foreach-Object {$_ -replace '#FFBD14',"$ThemeColour"}  | 
+Foreach-Object {$_ -replace 'FFBD14',"$ThemeColour"}  | 
 Out-File Custom\style.css
 
 (Get-Content Custom\style.css) | 
-Foreach-Object {$_ -replace '#FFBD15',"$ButtonColour"}  | 
+Foreach-Object {$_ -replace 'FFBD15',"$ButtonColour"}  | 
 Out-File Custom\style.css
 
 (Get-Content Custom\style.css) | 
-Foreach-Object {$_ -replace '#FFBD16',"$HeaderColour"}  | 
+Foreach-Object {$_ -replace 'FFBD16',"$HeaderColour"}  | 
 Out-File Custom\style.css
 
 #/* UK English Selection
@@ -54,8 +54,7 @@ Out-File Custom\style.css
 
 $UKE = Read-Host -Prompt "Do you want StoreFront to display United Kingdom English? [Y/N]"
 if ( $UKE -eq 'Y') {
-Robocopy "Source" Custom strings.en.js} ELSE {
-$UKE = 'nul'}
+Robocopy "Source" Custom strings.en.js}
 
 
 
