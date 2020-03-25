@@ -14,7 +14,7 @@ $Footer = Read-Host -Prompt "Do you want StoreFront to display the server name i
 if ( $Footer -eq 'Y') {
 $CSSsource = 'footer'} ELSE {
 $CSSsource = 'standard'}
-
+get-content -path 1.txt | add-content -path 2.txt
 
 
 
