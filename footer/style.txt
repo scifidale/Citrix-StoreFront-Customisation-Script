@@ -1,0 +1,18 @@
+﻿
+.customAuthFooter 
+{ 
+font-size:12px; 
+color:white; 
+bottom:10px; 
+text-align: center; 
+} 
+
+#customBottom 
+{ 
+text-align:center; 
+font-size:12px; 
+color:#000000; 
+padding:10px; 
+position:static; 
+background-color: Black; 
+} 

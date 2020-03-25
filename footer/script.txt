@@ -1,0 +1,10 @@
+﻿
+var req = new XMLHttpRequest(); 
+req.open('GET',document.location, false); 
+req.send(NULL); 
+
+var servername=req.getResponseHeader('SF-ServerName'); 
+
+$('.customAuthFooter').html(servername); 
+$('#customBottom').html(servername); 
+ 

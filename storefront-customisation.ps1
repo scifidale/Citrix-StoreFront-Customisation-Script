@@ -14,12 +14,14 @@ $Footer = Read-Host -Prompt "Do you want StoreFront to display the server name i
 if ( $Footer -eq 'Y') {
 $CSSsource = 'footer'} ELSE {
 $CSSsource = 'standard'}
-get-content -path 1.txt | add-content -path 2.txt
+get-content -path footer\script.txt | add-content -path Custom\script.css
 
+$Footer = Read-Host -Prompt "Do you want StoreFront to display the server name in the footer? [Y/N]"
+if ( $Footer -eq 'Y') {
+get-content -path footer\script.txt | add-content -path Custom\script.js
+get-content -path footer\style.txt | add-content -path Custom\style.css} ELSE {
+null}
 
-
-/* starting Colour picker applet
-Invoke-Expression ".\pixie.exe"
 
 
 /* Select Graphic
@@ -32,17 +34,17 @@ $Image | select-object FileName | FT -HideTableHeaders
 
 
 
-(Get-Content style.css) | 
+(Get-Content Custom\style.css) | 
 Foreach-Object {$_ -replace '#FFBD14',"$ThemeColour"}  | 
-Out-File style.css
+Out-File Custom\style.css
 
-(Get-Content style.css) | 
+(Get-Content Custom\style.css) | 
 Foreach-Object {$_ -replace '#FFBD15',"$ButtonColour"}  | 
-Out-File style.css
+Out-File Custom\style.css
 
-(Get-Content style.css) | 
+(Get-Content Custom\style.css) | 
 Foreach-Object {$_ -replace '#FFBD16',"$HeaderColour"}  | 
-Out-File style.css
+Out-File Custom\style.css
 
 /* UK English Selection
 
