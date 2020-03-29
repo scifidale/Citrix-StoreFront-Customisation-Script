@@ -1,3 +1,6 @@
+#Requires -RunAsAdministrator
+
+
 # Citrix StoreFront customisation guide 
 Invoke-Expression ".\pixie.exe"
 
@@ -23,7 +26,10 @@ $Footer = Read-Host -Prompt "Do you want StoreFront to display the server name i
 if ( $Footer -eq 'Y') {
 get-content -path footer\script.txt | add-content -path Custom\script.js
 get-content -path footer\style.txt | add-content -path Custom\style.css
-C:\windows\system32\inetsrv\appcmd.exe set config /section:httpProtocol /+customHeaders.[name='SF-ServerName',value="%computername%"]} 
+Add-WebConfigurationProperty -PSPath MACHINE/WEBROOT/APPHOST `
+    -Name . -Filter system.webServer/httpProtocol/customHeaders `
+    -AtElement @{name = "SF-ServerName" ; value = "$Server" }
+} 
 
 
 
