@@ -7,11 +7,16 @@ Invoke-Expression ".\pixie.exe"
 
 
 
-$SFStore = Read-Host -Prompt "Input Store name"
+$SFStore = Read-Host -Prompt "Input Store name, Example StoreWeb"
+CLS
 $ThemeColour = Read-host -Prompt "Input Hex theme Colour one"
+CLS
 $ButtonColour = Read-Host -Prompt "Input Hex for Button Colour"
+CLS
 $HeaderColor =  Read-Host -Prompt "Inpurt Hex for post login Header Colour"
+CLS
 $Server = Read-Host -Prompt 'Input your server  name'
+CLS
 
 #$Footer = Read-Host -Prompt "Do you want StoreFront to display the server name in the footer? [Y/N]"
 #if ( $Footer -eq 'Y') {
@@ -37,8 +42,8 @@ Add-WebConfigurationProperty -PSPath MACHINE/WEBROOT/APPHOST `
 Add-Type -AssemblyName System.Windows.Forms
 $Image = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
 $null = $FileBrowser.ShowDialog()
-$Image | select-object FileName | FT -HideTableHeaders
-
+$Image = $FileBrowser | select-object FileName | FT -HideTableHeaders
+Robocopy $Image Custom
 #/* Server configuration block for no server name in footer
 
 
@@ -62,6 +67,9 @@ $UKE = Read-Host -Prompt "Do you want StoreFront to display United Kingdom Engli
 if ( $UKE -eq 'Y') {
 Robocopy "Source" Custom strings.en.js}
 
+
+#/* Deploy Custom Scripts to Storefront
+Robocopy Custom c:\inetpub\wwwroot\Citrix\$SFStore\custom
 
 
 
