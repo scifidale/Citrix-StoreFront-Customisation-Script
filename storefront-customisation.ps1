@@ -40,7 +40,7 @@ Add-WebConfigurationProperty -PSPath MACHINE/WEBROOT/APPHOST `
 
 #/* Select Graphic
 Add-Type -AssemblyName System.Windows.Forms
-$Image = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
+$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
 $null = $FileBrowser.ShowDialog()
 $Image = $FileBrowser | select-object FileName | FT -HideTableHeaders
 Robocopy $Image Custom
