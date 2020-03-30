@@ -13,20 +13,17 @@ $ThemeColour = Read-host -Prompt "Input Hex theme Colour one"
 CLS
 $ButtonColour = Read-Host -Prompt "Input Hex for Button Colour"
 CLS
-$HeaderColor =  Read-Host -Prompt "Inpurt Hex for post login Header Colour"
+$HeaderColour =  Read-Host -Prompt "Inpurt Hex for post login Header Colour"
 CLS
 $Server = Read-Host -Prompt 'Input your server  name'
 CLS
 
-#$Footer = Read-Host -Prompt "Do you want StoreFront to display the server name in the footer? [Y/N]"
-#if ( $Footer -eq 'Y') {
-#$CSSsource = 'footer'} ELSE {
-#$CSSsource = 'standard'}
-#get-content -path footer\script.txt | add-content -path Custom\script.css
 
 Robocopy Source Custom style.css
 Robocopy Source Custom script.js
+CLS
 
+#/* Storefront server name config
 $Footer = Read-Host -Prompt "Do you want StoreFront to display the server name in the footer? [Y/N]"
 if ( $Footer -eq 'Y') {
 get-content -path footer\script.txt | add-content -path Custom\script.js

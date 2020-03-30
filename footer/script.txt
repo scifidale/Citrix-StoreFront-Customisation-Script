@@ -1,7 +1,7 @@
 ﻿
 var req = new XMLHttpRequest(); 
 req.open('GET',document.location, false); 
-req.send(NULL); 
+req.send(null); 
 
 var servername=req.getResponseHeader('SF-ServerName'); 
 
