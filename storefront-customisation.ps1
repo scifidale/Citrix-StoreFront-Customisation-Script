@@ -39,6 +39,9 @@ Add-WebConfigurationProperty -PSPath MACHINE/WEBROOT/APPHOST `
 
 
 #/* Select Graphic
+Add-Type -AssemblyName PresentationFramework
+[System.Windows.MessageBox]::Show('Select Company logo in PNG or JPG Format')
+Start-sleep -s 3
 Add-Type -AssemblyName System.Windows.Forms
 $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
 $null = $FileBrowser.ShowDialog()

@@ -25,6 +25,8 @@
     width: 130px;
     height: 52px;
     background-image: url(eec-logo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
     display: block;
 }
 
@@ -81,6 +83,7 @@ header, section {
     background-position: left center;
     background-repeat: no-repeat;
     background-image: url(eec-logo.png);
+    background-size: 170px;
 }
 
 .no-fav-results-message-image {
