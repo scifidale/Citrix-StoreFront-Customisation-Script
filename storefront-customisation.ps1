@@ -42,9 +42,15 @@ Add-WebConfigurationProperty -PSPath MACHINE/WEBROOT/APPHOST `
 Add-Type -AssemblyName System.Windows.Forms
 $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ InitialDirectory = [Environment]::GetFolderPath('Desktop') }
 $null = $FileBrowser.ShowDialog()
-$Image = $FileBrowser | select-object FileName | FT -HideTableHeaders
-Robocopy $Image Custom
-#/* Server configuration block for no server name in footer
+$ImageSource = $FileBrowser | select-object InitialDirectory | FT -HideTableHeaders | Out-String -stream
+$Image = $FileBrowser | select-object SafeFileName | FT -HideTableHeaders | Out-String -stream
+Robocopy $ImageSource Custom $Image
+
+#/* Set Image 
+
+(Get-Content Custom\style.css) | 
+Foreach-Object {$_ -replace 'eec-logo.png',"$Image"}  | 
+Out-File Custom\style.css
 
 
 
