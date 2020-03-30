@@ -2,18 +2,21 @@
 
 
 # Citrix StoreFront customisation guide 
+CLS
+Write-host "StoreFront customisation script v0.1"
+Write-host "Launching colour selector applet"
+Write-host "--------------------------------"
+start-sleep -s 5
 Invoke-Expression ".\pixie.exe"
-
-
 
 
 $SFStore = Read-Host -Prompt "Input Store name, Example StoreWeb"
 CLS
-$ThemeColour = Read-host -Prompt "Input Hex theme Colour one"
+$ThemeColour = Read-host -Prompt "Input Hex theme Colour one, excluding the #"
 CLS
-$ButtonColour = Read-Host -Prompt "Input Hex for Button Colour"
+$ButtonColour = Read-Host -Prompt "Input Hex for Button Colour, excluding the #"
 CLS
-$HeaderColour =  Read-Host -Prompt "Inpurt Hex for post login Header Colour"
+$HeaderColour =  Read-Host -Prompt "Inpurt Hex for post login Header Colour, excluding the #"
 CLS
 $Server = Read-Host -Prompt 'Input your server  name'
 CLS
