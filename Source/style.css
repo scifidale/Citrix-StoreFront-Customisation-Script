@@ -32,6 +32,7 @@
 
 .logon-logo-container {
     background-image: url(eec-logo.png);
+	background-size: contain;
 }
 
 
@@ -83,7 +84,7 @@ header, section {
     background-position: left center;
     background-repeat: no-repeat;
     background-image: url(eec-logo.png);
-    background-size: 170px;
+    background-size: contain;
 }
 
 .no-fav-results-message-image {

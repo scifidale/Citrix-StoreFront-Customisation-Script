@@ -89,15 +89,13 @@ CLS
 Write-Host "Replicating Customisation"
 Start-DSClusterConfigurationUpdate
 
+#/* Stopping Pixie applet
+Stop-Process -Name Pixie -force
+
+
+#/* Script Complete 
 CLS
-Write-Host "Script Complete"
+Write-Host "Script Complete" -ForegroundColor Green
 if ( $Footer -eq 'Y') {
-Write-Host "Dont forget to add IIS Response Headers to the other storefront Server using format SF-ServerName %Hostname%"}
-
-#/* CODE BLOCKS 
-
-#$test = Read-Host -Prompt "Do you want StoreFront to display United Kingdom English? [Y/N]"
-#if ( $test -eq 'Y') {
-#$dale = 'cool'} ELSE {
-#$dale = 'not'}
+Write-Host "Dont forget to add IIS Response Headers to the other storefront Server using format SF-ServerName %Hostname%" -Foregroundcolor Green}
 
