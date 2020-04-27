@@ -47,7 +47,7 @@ $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ Initi
 $null = $FileBrowser.ShowDialog()
 $ImageSource = $FileBrowser | select-object InitialDirectory | FT -HideTableHeaders | Out-String -stream
 $Image = $FileBrowser | select-object SafeFileName | FT -HideTableHeaders | Out-String -stream
-Robocopy $ImageSource Custom $Image
+Robocopy $ImageSource $PSScriptRoot\Custom\ $Image
 
 #/* Set Image 
 
@@ -81,6 +81,18 @@ Robocopy "Source" Custom strings.en.js}
 Robocopy Custom c:\inetpub\wwwroot\Citrix\$SFStore\custom
 
 
+#/* Replication of configuration
+Write-Host "Replicating StoreFront customsation Configuration" 
+Write-Host "Importing Powershell CMDlets"
+& 'C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1'
+CLS 
+Write-Host "Replicating Customisation"
+Start-DSClusterConfigurationUpdate
+
+CLS
+Write-Host "Script Complete"
+if ( $Footer -eq 'Y') {
+Write-Host "Dont forget to add IIS Response Headers to the other storefront Server using format SF-ServerName %Hostname%"}
 
 #/* CODE BLOCKS 
 
