@@ -5,8 +5,14 @@ To execute script run storefront-customisation.ps1 as administrator from a Citri
 
 
 v0.1 includes
-single image setting 
-colour selection for header, background and button
-loading screen customsation 
-choice to include footer with hostname 
-choice to include UK spelling 
+Single image setting 
+Colour selection for header, background and button
+Loading screen customsation 
+Choice to include footer with hostname 
+Choice to include UK spelling 
+
+v0.2 also includes 
+Added center band colour customsation 
+Improved image sizing 
+Citrix StoreFront replication 
+
