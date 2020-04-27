@@ -10,13 +10,15 @@ start-sleep -s 5
 Invoke-Expression ".\pixie.exe"
 
 
-$SFStore = Read-Host -Prompt "Input Store name, Example StoreWeb"
+$SFStore = Read-Host -Prompt "Input store name, example StoreWeb"
 CLS
-$ThemeColour = Read-host -Prompt "Input Hex theme Colour one, excluding the #"
+$ThemeColour = Read-host -Prompt "Input hex theme colour one, excluding the #"
 CLS
-$ButtonColour = Read-Host -Prompt "Input Hex for Button Colour, excluding the #"
+$LoginBand = Read-Host -Prompt "Input hex centre login band colour, excluding the #"
 CLS
-$HeaderColour =  Read-Host -Prompt "Inpurt Hex for post login Header Colour, excluding the #"
+$ButtonColour = Read-Host -Prompt "Input hex for button colour, excluding the #"
+CLS
+$HeaderColour =  Read-Host -Prompt "Inpurt hex for post login header colour, excluding the #"
 CLS
 $Server = Read-Host -Prompt 'Input your server  name'
 CLS
@@ -67,6 +69,10 @@ Out-File Custom\style.css
 
 (Get-Content Custom\style.css) | 
 Foreach-Object {$_ -replace 'FFBD16',"$HeaderColour"}  | 
+Out-File Custom\style.css
+
+(Get-Content Custom\style.css) | 
+Foreach-Object {$_ -replace 'FFBD17',"$LoginBand"}  | 
 Out-File Custom\style.css
 
 #/* UK English Selection
