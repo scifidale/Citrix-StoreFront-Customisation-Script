@@ -26,7 +26,7 @@
     height: 52px;
     background-image: url(eec-logo.png);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     display: block;
 }
 
